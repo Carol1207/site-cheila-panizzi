@@ -122,10 +122,6 @@ function ClinicPage() {
                       fetchPriority={index === 0 ? "high" : "auto"}
                       className="aspect-[16/9] w-full object-cover"
                     />
-                    <figcaption className="absolute bottom-4 left-4 flex items-center gap-3 rounded-2xl bg-card/95 px-4 py-3 shadow-lg ring-1 ring-border backdrop-blur-xl sm:bottom-6 sm:left-6">
-                      <span className="grid size-10 place-items-center rounded-full bg-brand text-primary-foreground"><Building2 className="size-5" /></span>
-                      <div><p className="text-sm font-semibold">Um espaço completo</p><p className="text-xs text-foreground/60">acolhimento em cada ambiente</p></div>
-                    </figcaption>
                   </figure>
                 </CarouselItem>
               ))}
