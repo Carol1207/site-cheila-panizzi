@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import banhoImage from "@/assets/sala-banho.jpg";
+import cachorrosCrecheImage from "@/assets/cachorros-creche.jpg";
 import cirurgiaImage from "@/assets/cirurgia-clinica.jpg";
 import consultorioImage from "@/assets/especialidades-consultorio.jpg";
 import crecheImage from "@/assets/creche-clinica.jpg";
@@ -111,6 +112,7 @@ function ClinicPage() {
               {[
                 { src: frenteClinicaImage, alt: "Frente da clínica Cheila Panizzi Veterinária" },
                 { src: salaPrincipalImage, alt: "Sala principal da clínica Cheila Panizzi Veterinária" },
+                { src: cachorrosCrecheImage, alt: "Cachorros na creche da clínica Cheila Panizzi Veterinária" },
               ].map((img, index) => (
                 <CarouselItem key={index}>
                   <figure className="relative overflow-hidden rounded-3xl ring-1 ring-border">
