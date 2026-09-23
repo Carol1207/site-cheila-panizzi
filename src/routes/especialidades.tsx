@@ -1,5 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Cat, Eye, HeartPulse, ScanLine, Smile, Sparkles, Syringe, TreePine, Wind } from "lucide-react";
+import {
+  Apple,
+  Bone,
+  Droplets,
+  Eye,
+  HeartPulse,
+  Ribbon,
+  ScanLine,
+  Smile,
+  Sparkles,
+  Syringe,
+  TreePine,
+  Wind,
+} from "lucide-react";
 import type { ReactNode } from "react";
 
 import { SiteFooter } from "@/components/site-footer";
@@ -13,7 +26,7 @@ export const Route = createFileRoute("/especialidades")({
       {
         name: "description",
         content:
-          "Conheça as especialidades da Cheila Panizzi Veterinária: cardiologia, dermatologia, oftalmologia, odontologia, endocrinologia, diagnóstico por imagem, medicina felina e animais silvestres.",
+          "Conheça as especialidades da Cheila Panizzi Veterinária: cardiologia, dermatologia, oftalmologia, odontologia, endocrinologia, ortopedia, oncologia, nefrologia, gastroenterologia, diagnóstico por imagem e animais silvestres.",
       },
       { property: "og:title", content: "Especialidades | Cheila Panizzi Veterinária" },
       {
@@ -59,20 +72,34 @@ const specialties: { title: string; text: string; icon: ReactNode; badge?: strin
     icon: <Syringe />,
   },
   {
+    title: "Ortopedia",
+    text: "Diagnóstico e tratamento de fraturas, lesões articulares, artroses e problemas locomotores para devolver a mobilidade do seu pet.",
+    icon: <Bone />,
+  },
+  {
+    title: "Oncologia",
+    text: "Diagnóstico precoce, estadiamento e tratamentos oncológicos personalizados com foco no bem-estar e na qualidade de vida.",
+    icon: <Ribbon />,
+  },
+  {
+    title: "Nefrologia",
+    text: "Prevenção, diagnóstico e acompanhamento de doenças renais e distúrbios urinários para proteger a saúde e o equilíbrio do pet.",
+    icon: <Droplets />,
+  },
+  {
+    title: "Gastroenterologia",
+    text: "Investigação e tratamento de distúrbios digestivos, intolerâncias alimentares e doenças gastrointestinais com conduta individualizada.",
+    icon: <Apple />,
+  },
+  {
     title: "Diagnóstico por imagem",
     text: "Exames de imagem para investigação precisa, apoiando diagnósticos e decisões clínicas com segurança.",
     icon: <ScanLine />,
   },
   {
-    title: "Medicina de felinos",
-    text: "Atendimento especializado e adaptado às necessidades dos gatos, em um ambiente calmo e acolhedor.",
-    icon: <Cat />,
-  },
-  {
     title: "Animais silvestres e exóticos",
     text: "Atendimento dedicado a espécies silvestres e exóticas com manejo cuidadoso e conhecimento especializado.",
     icon: <TreePine />,
-    badge: "Sob consulta marcada",
   },
 ];
 
