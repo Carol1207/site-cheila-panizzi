@@ -82,15 +82,15 @@ function MobileNavigation() {
   return (
     <nav
       aria-label="Navegação móvel"
-      className="mt-8 flex flex-col gap-5 text-base text-foreground/80"
+      className="mt-8 flex flex-col gap-2 px-6 text-base text-foreground/80"
     >
       {links.map(({ to, label, exact }) => (
         <SheetClose asChild key={to}>
           <Link
             to={to}
             activeOptions={exact ? { exact: true } : undefined}
-            activeProps={{ className: "font-semibold text-brand" }}
-            className="transition-colors hover:text-brand"
+            activeProps={{ className: "bg-brand-soft font-semibold text-brand" }}
+            className="rounded-xl px-4 py-3 transition-colors hover:bg-brand-soft hover:text-brand"
           >
             {label}
           </Link>
@@ -129,8 +129,26 @@ export function SiteHeader() {
                 <Menu className="size-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="w-[min(85vw,20rem)]">
-              <SheetTitle>Menu</SheetTitle>
+            <SheetContent
+              side="left"
+              className="w-[min(85vw,20rem)] border-r border-brand/15 bg-background p-0"
+            >
+              <div className="bg-brand-soft px-6 pb-7 pt-16">
+                <Link
+                  to="/"
+                  className="inline-flex items-center gap-3"
+                  aria-label="Cheila Panizzi Veterinária - início"
+                >
+                  <PawMark compact />
+                  <span className="sr-only">Cheila Panizzi Veterinária</span>
+                </Link>
+                <SheetTitle className="mt-4 font-display text-2xl font-medium text-ink">
+                  Menu principal
+                </SheetTitle>
+                <p className="mt-1 text-sm text-foreground/65">
+                  Cuidado e carinho em cada detalhe.
+                </p>
+              </div>
               <MobileNavigation />
             </SheetContent>
           </Sheet>
