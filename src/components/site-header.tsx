@@ -1,13 +1,19 @@
 import { Link } from "@tanstack/react-router";
-import { MessageCircle } from "lucide-react";
+import { Menu, MessageCircle } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { whatsappUrl } from "@/lib/site";
 import logoAsset from "@/assets/cheila-panizzi-logo.svg";
 
 export function PawMark({ compact = false }: { compact?: boolean }) {
   return (
-    <img src={logoAsset} alt="" aria-hidden="true" className={compact ? "h-10 w-auto" : "h-14 w-auto sm:h-16"} />
+    <img
+      src={logoAsset}
+      alt=""
+      aria-hidden="true"
+      className={compact ? "h-10 w-auto" : "h-14 w-auto sm:h-16"}
+    />
   );
 }
 
@@ -64,23 +70,89 @@ function Navigation({ mobile = false }: { mobile?: boolean }) {
   );
 }
 
+function MobileNavigation() {
+  const links = [
+    { to: "/", label: "Início", exact: true },
+    { to: "/servicos", label: "Serviços" },
+    { to: "/especialidades", label: "Especialidades" },
+    { to: "/conheca-a-clinica", label: "Conheça a Clínica" },
+    { to: "/quem-somos", label: "Quem Somos" },
+  ] as const;
+
+  return (
+    <nav
+      aria-label="Navegação móvel"
+      className="mt-8 flex flex-col gap-5 text-base text-foreground/80"
+    >
+      {links.map(({ to, label, exact }) => (
+        <SheetClose asChild key={to}>
+          <Link
+            to={to}
+            activeOptions={exact ? { exact: true } : undefined}
+            activeProps={{ className: "font-semibold text-brand" }}
+            className="transition-colors hover:text-brand"
+          >
+            {label}
+          </Link>
+        </SheetClose>
+      ))}
+    </nav>
+  );
+}
+
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        <Link to="/" className="flex items-center gap-2.5" aria-label="Cheila Panizzi Veterinária - início">
-          <PawMark />
-          <span className="sr-only">Cheila Panizzi Veterinária</span>
-        </Link>
-        <Navigation />
-        <Button asChild className="rounded-full shadow-none">
-          <a href={whatsappUrl} target="_blank" rel="noreferrer">
-            <MessageCircle />
-            <span className="hidden sm:inline">WhatsApp</span>
-          </a>
-        </Button>
-      </div>
-      <Navigation mobile />
-    </header>
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-background/90 backdrop-blur-xl lg:sticky">
+        <div className="mx-auto hidden max-w-6xl items-center justify-between px-5 py-4 sm:px-8 lg:flex">
+          <Link
+            to="/"
+            className="flex items-center gap-2.5"
+            aria-label="Cheila Panizzi Veterinária - início"
+          >
+            <PawMark />
+            <span className="sr-only">Cheila Panizzi Veterinária</span>
+          </Link>
+          <Navigation />
+          <Button asChild className="rounded-full shadow-none">
+            <a href={whatsappUrl} target="_blank" rel="noreferrer">
+              <MessageCircle />
+              <span className="hidden sm:inline">WhatsApp</span>
+            </a>
+          </Button>
+        </div>
+
+        <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between px-5 lg:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" aria-label="Abrir menu">
+                <Menu className="size-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[min(85vw,20rem)]">
+              <SheetTitle>Menu</SheetTitle>
+              <MobileNavigation />
+            </SheetContent>
+          </Sheet>
+
+          <Link to="/" aria-label="Cheila Panizzi Veterinária - início">
+            <PawMark compact />
+            <span className="sr-only">Cheila Panizzi Veterinária</span>
+          </Link>
+
+          <Button
+            asChild
+            size="icon"
+            className="rounded-full shadow-none"
+            aria-label="Falar pelo WhatsApp"
+          >
+            <a href={whatsappUrl} target="_blank" rel="noreferrer">
+              <MessageCircle />
+            </a>
+          </Button>
+        </div>
+      </header>
+      <div className="h-[4.5rem] lg:hidden" aria-hidden="true" />
+    </>
   );
 }
