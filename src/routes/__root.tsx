@@ -80,10 +80,44 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Cheila Panizzi Veterinária" },
       { name: "description", content: "Cuidado veterinário completo e acolhedor para seu pet." },
       { name: "author", content: "Cheila Panizzi Veterinária" },
+      { name: "application-name", content: "Cheila Panizzi Veterinária" },
+      { name: "apple-mobile-web-app-title", content: "Cheila Panizzi Veterinária" },
+      { property: "og:site_name", content: "Cheila Panizzi Veterinária" },
       { property: "og:type", content: "website" },
       { property: "og:image", content: "/logo-desenho.png" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: "/logo-desenho.png" },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Cheila Panizzi Veterinária",
+          alternateName: [
+            "Cheila Panizzi",
+            "Clínica Veterinária Cheila Panizzi",
+            "Clínica Cheila Panizzi",
+            "Cheila Panizzi Pet Care",
+          ],
+          url: "https://www.cheilapanizzi.com.br/",
+        },
+      },
+      {
+        "script:ld+json": {
+          "@context": "https://schema.org",
+          "@type": "VeterinaryCare",
+          name: "Cheila Panizzi Veterinária",
+          image: "https://www.cheilapanizzi.com.br/logo-desenho.png",
+          url: "https://www.cheilapanizzi.com.br/",
+          telephone: "+55-51-3478-1426",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Canoas",
+            addressRegion: "RS",
+            addressCountry: "BR",
+          },
+          priceRange: "$$",
+        },
+      },
     ],
     links: [
       {

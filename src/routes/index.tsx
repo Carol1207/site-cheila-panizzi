@@ -37,6 +37,7 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Cuidado completo para seu pet, do banho aos exames e cirurgias.",
       },
+      { property: "og:site_name", content: "Cheila Panizzi Veterinária" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

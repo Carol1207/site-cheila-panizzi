@@ -6,6 +6,11 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import { nitro } from "nitro/vite";
 
 export default defineConfig({
+  server: {
+    watch: {
+      ignored: ["**/*.jpg", "**/*.jpeg", "**/*.png", "**/*.webp", "**/*.svg", "**/node_modules/**"],
+    },
+  },
   plugins: [
     tsConfigPaths({
       projects: ["./tsconfig.json"],
