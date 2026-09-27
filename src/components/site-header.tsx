@@ -71,13 +71,13 @@ function Navigation({ mobile = false }: { mobile?: boolean }) {
 }
 
 function MobileNavigation() {
-  const links = [
+  const links: Array<{ to: string; label: string; exact?: boolean }> = [
     { to: "/", label: "Início", exact: true },
     { to: "/servicos", label: "Serviços" },
     { to: "/especialidades", label: "Especialidades" },
     { to: "/conheca-a-clinica", label: "Conheça a Clínica" },
     { to: "/quem-somos", label: "Quem Somos" },
-  ] as const;
+  ];
 
   return (
     <nav
@@ -88,7 +88,7 @@ function MobileNavigation() {
         <SheetClose asChild key={to}>
           <Link
             to={to}
-            activeOptions={exact ? { exact: true } : undefined}
+            activeOptions={exact ? { exact: true } : { exact: false }}
             activeProps={{ className: "font-semibold text-brand" }}
             className="transition-colors hover:text-brand"
           >
